@@ -1,6 +1,6 @@
 services:
   - type: web
-    repo: https://github.com/MiltonRen/it-takes-three-test
+    repo: https://github.com/MiltonRen/it-takes-three
     name: THREE-prod-web
     plan: free
     env: ruby
