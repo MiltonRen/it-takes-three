@@ -12,6 +12,7 @@ class Room < ApplicationRecord
   has_noticed_notifications model_name: 'Notification'
 
   def broadcast_if_public
+    broadcast_replace_to(self, target: "#{name}_bot_status", partial: "rooms/bot_status", locals: { current_room: self })
     broadcast_latest_message
   end
 

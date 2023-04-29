@@ -21,7 +21,7 @@
     </li>
 -->
 
-    <h4 class="text-center my-4 text-muted"> 😃 Your Matches 🌹</h4>
+    <h4 class="text-center my-4 text-muted"> 😃 Your Matches</h4>
     <%= turbo_stream_from "users" %>
     <div id="users" data-controller="user-list">
       <%= render "users/users", users: @users %>
@@ -44,7 +44,7 @@
         <h4 class="text-center my-4 text-muted">
           💬
           <%= @user&.username || @single_room.name %>
-          + Bot 🤖
+          & Bot
 <!--
           <span><%= link_to "Call", call_user_path(user: @user), target: "_blank" %></span>
 -->
@@ -69,29 +69,41 @@
 
 
   <div id="side_panel_right" class="col-md-4">
-    <h4 class="text-center my-4 text-muted"> 💁🏻‍♀️ About It Takes Three 📖 </h4>
-    <p class="text-dark">
-      Put instructions here how to use this tool. Also describe its features
+    <h4 class="text-center my-4 text-muted"> 💁🏻‍♀️ About Demo </h4>
+    <div class="text-dark">
+      Here's how to play with this demo:
       <br><br>
 
-      Include <b>@bot</b> in your message to instantantly engage the bot!
+      Enrich your profile to give the bot more context about you. This will help it generate more relevant ice breakers and ideas.
+      <br><br>
+      <%= link_to "My Profile", edit_user_registration_path, class:'btn btn-secondary' %>
       <br><br>
 
-      Edit your profile to give GPT bot some context about you. This will help it generate more relevant ice breakers and conversations.
+      The bot will automatically bootstrap a new conversation by providing an ice-breaker based on your & your match's profiles.
       <br><br>
-      <%= link_to "Edit My Profile", edit_user_registration_path, class:'btn btn-secondary' %>
+      <% if @single_room.present? %>
+        You can check the bot's status here ( idle / thinking ). If the bot becomes unresponsive, use this button to reset it:
+        <br><br>
+        <div class="d-flex justify-content-begin align-items-center">
+          <%= link_to "Reset Bot", room_refresh_path(@single_room), class:'btn btn-secondary mr-2', data: { 'turbo-method': :patch }  %>
+          <%= render 'rooms/bot_status', current_room: @single_room %>
+        </div>
+        <br>
+      <% end %>
+
+      The bot will jump into the conversation from time to time. You can also type <b class="text-info">@bot</b> in your messages to ask the bot to participate immediately!
+
+      <br><br>
+      <div class="text-muted" style="font-size: 0.7em;">
+        Made with <i class="fa-solid fa-heart text-muted"></i> by 
+        <a href="https://devpost.com/sarahtxy" target="_blank" class="text-muted">Xinyu</a>
+        and
+        <a href="https://devpost.com/milton-x-ren" target="_blank" class="text-muted">Milton</a>
+        for
+        <a href="https://prompthacks.devpost.com/" target="_blank" class="text-muted">PromptHacks 2023</a>
+      </div>
       <br><br>
 
-      Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley. He looked or valley lively. If learn woody spoil of taken he cause.
-      <br><br>
-      Brother set had private his letters observe outward resolve. Shutters ye marriage to throwing we as. Effect in if agreed he wished wanted admire expect. Or shortly visitor is comfort placing to cheered do. Few hills tears are weeks saw. Partiality insensible celebrated is in. Am offended as wandered thoughts greatest an friendly. Evening covered in he exposed fertile to. Horses seeing at played plenty nature to expect we. Young say led stood hills own thing get.
-      <br><br>
-      He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.
-      <br><br>
-      It sportsman earnestly ye preserved an on. Moment led family sooner cannot her window pulled any. Or raillery if improved landlord to speaking hastened differed he. Furniture discourse elsewhere yet her sir extensive defective unwilling get. Why resolution one motionless you him thoroughly. Noise is round to in it quick timed doors. Written address greatly get attacks inhabit pursuit our but. Lasted hunted enough an up seeing in lively letter. Had judgment out opinions property the supplied.
-      <br><br>
-      Denote simple fat denied add worthy little use. As some he so high down am week. Conduct esteems by cottage to pasture we winding. On assistance he cultivated considered frequently. Person how having tended direct own day man. Saw sufficient indulgence one own you inquietude sympathize.
-      <br><br>
-    </p>
+    </div>
   </div>
 </div>

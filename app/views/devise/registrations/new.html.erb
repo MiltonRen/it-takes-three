@@ -1,4 +1,5 @@
-<div class="card p-4 m-4 bg-dark text-light mx-auto" style="width: 25em;">
+<div class="dynamic_bg" style="height: max(55em, calc(100vh - 150px));">
+<div class="card p-4 m-4 bg-dark text-light mx-auto" style="width: 21em;">
   <h2>Sign up</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -32,7 +33,9 @@
   <%= render "devise/shared/links" %>
 </div>
 
-<footer class="bg-info text-center text-lg-start text-muted fixed-bottom">
+</div>
+
+<footer class="bg-info text-center text-lg-start text-muted">
   <!-- Copyright -->
   <div class="text-center p-3 bg-dark">
     © 2023 It Takes Three

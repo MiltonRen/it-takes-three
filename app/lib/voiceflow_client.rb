@@ -12,8 +12,6 @@ class VoiceflowClient < ApplicationClient
 
   def interact(user_id, user_input)
     response = post "/state/user/#{user_id}/interact", action: {type: "text", payload: user_input}
-    message = response.detect {|trace| trace.type == "text"}&.payload&.message
-    return message if message.present?
-    return "Sorry, I'm taking a break right now ☕️"
+    response.detect {|trace| trace.type == "text"}&.payload&.message
   end
 end

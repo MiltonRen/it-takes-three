@@ -2,7 +2,8 @@
   <div class="cont-<%=message.user.id%>">
     <div class="bot-message-box msg-<%= message.user.id %>">
       <div class="text-center mb-2">
-        🤖💬
+        <i class="fa-solid fa-robot"></i>
+        <i class="fa-solid fa-comment"></i>
       </div>
       <div class="text-center">
         <%= markdown(message.body) %>

@@ -86,3 +86,5 @@ gem "chartkick", "~> 4.2"
 gem "groupdate", "~> 6.1"
 
 gem 'sidekiq'
+
+gem "font-awesome-sass", "~> 6.4.0"

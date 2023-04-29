@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       post :search
     end
+    patch :refresh
   end
   # leave_room_path(room)
   get 'rooms/leave/:id', to: 'rooms#leave', as: 'leave_room'

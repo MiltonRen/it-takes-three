@@ -1,4 +1,12 @@
-<div class="card p-4 m-4 bg-dark text-light mx-auto" style="width: 25em;">
+<div class="dynamic_bg" style="height: calc(100vh - 126px);">
+<div class="card p-4 m-4 bg-dark text-light mx-auto" style="
+  width: 20em;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);">
   <h2>Log in</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -28,7 +36,9 @@
 
 </div>
 
-<footer class="bg-info text-center text-lg-start fixed-bottom text-muted">
+</div>
+
+<footer class="bg-info text-center text-lg-start text-muted">
   <!-- Copyright -->
   <div class="text-center p-3 bg-dark">
     © 2023 It Takes Three

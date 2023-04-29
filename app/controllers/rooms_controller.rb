@@ -62,6 +62,12 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
+  def refresh
+    @room = Room.find(params[:room_id])
+    @room.update!(talking_with_bot: false)
+    redirect_to @room
+  end
+
   private
 
   def set_status

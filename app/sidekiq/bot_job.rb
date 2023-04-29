@@ -5,6 +5,7 @@ class BotJob
 
   def perform(room_name, room_id, prompt)
     response = VF_CLIENT.interact(room_name, prompt)
+    return if response.blank?
 
     Message.create!(
       body: response,

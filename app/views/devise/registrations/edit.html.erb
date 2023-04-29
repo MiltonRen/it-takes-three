@@ -1,4 +1,5 @@
-<div class="card p-4 m-4 bg-dark text-light mx-auto" style="width: 25em;">
+<div class="dynamic_bg" >
+<div class="card p-4 m-4 bg-dark text-light mx-auto" style="width: 22em;">
   <%= link_to :back, class: "text-muted mb-2" do %>
   &larr;
   back to chat
@@ -12,7 +13,7 @@
       <%= image_tag(resource.avatar_thumbnail) if resource.avatar.attached? %>
     </div>
     <div class="field mt-4">
-      <%= f.file_field :avatar, class: "btn btn-secondary" %>
+      <%= f.file_field :avatar, class: "btn btn-secondary w-100" %>
     </div>
     <div class="field mt-4">
       <%= f.label :email %><br />
@@ -50,10 +51,11 @@
 </div>
 
 <br><br><br>
-<footer class="bg-info text-center text-lg-start text-muted fixed-bottom">
+<footer class="bg-info text-center text-lg-start text-muted">
   <!-- Copyright -->
   <div class="text-center p-3 bg-dark">
     © 2023 It Takes Three
   </div>
   <!-- Copyright -->
 </footer>
+</div>

@@ -1,4 +1,4 @@
-<div class="p-5 text-center">
+<div class="p-5 text-center dynamic_bg" style="height: max(55em, calc(100vh - 126px));">
   <% if current_user.present? %>
     <%= audio_tag "dingding.mp3", id: 'dingding-tag' %>
     <script>
@@ -38,11 +38,13 @@
       BTW, to make the demo easier...
       <br/>
       Everybody is matched with everybody by default : )
-      <br/><br/><br/>
+      <br/><br/>
     </h6>
 
     <%= link_to "Chat with my matches", rooms_path, class:'btn btn-success btn-lg mx-1' %>
+    <!--
     <%= link_to "View my profile", edit_user_registration_path, class:'btn btn-secondary btn-lg mx-1' %>
+    -->
   <% else %>
     <h4 class="">
       🔥 Tinder x GPT 🤖
@@ -65,7 +67,7 @@
   <% end %>
 </div>
 
-<footer class="bg-info text-center text-lg-start fixed-bottom text-muted">
+<footer class="bg-info text-center text-lg-start text-muted footer">
   <!-- Copyright -->
   <div class="text-center p-3 bg-dark">
     © 2023 It Takes Three
