@@ -24,7 +24,7 @@ services:
   - type: worker
     repo: https://github.com/MiltonRen/it-takes-three
     name: THREE-prod-worker
-    plan: free
+    plan: starter
     env: ruby
     buildCommand: bundle install
     startCommand: bundle exec sidekiq
