@@ -25,8 +25,8 @@
   opacity: 0.75;
 }
 /**
-    * Adds a horizontal scroll bar that hides extra attachments
-    */
+* Adds a horizontal scroll bar that hides extra attachments
+*/
 #attachment-previews {
   position: absolute;
   display: inline;
