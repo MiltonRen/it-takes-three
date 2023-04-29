@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   get 'call', to: 'call#user', as: 'call_user'
   post 'call', to: 'call#create'
 
-  require "sidekiq/web"
-  mount Sidekiq::Web => '/sidekiq'
+  authenticated :user, lambda { |u| u.id == 1 } do
+    require "sidekiq/web"
+    mount Sidekiq::Web => '/sidekiq' 
+  end
 
   resources :rooms do
     resources :messages
