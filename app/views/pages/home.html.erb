@@ -1,0 +1,40 @@
+<div class="p-5 text-center">
+
+<% if current_user.present? %>
+  <h1>Welcome, <%= current_user.username %>!</h1>
+<% else %>
+  <h1>It Takes Three</h1>
+<% end %>
+
+  <p>You have <%= User.count - 1 %> matches ~ <strong><%= @online_users %></strong> are online now!</p>
+  <p>
+    Tired of the same old dating app conversations?<br />
+    Looking for a way to break the ice and make a good impression?<br />
+    Introducing <b>It Take Three</b> -- invite a lovely <b>GPT chatbot</b> to the chat with your matches!<br />
+    Our bot helps you find common ground with your matches, so you can start building a connection right away <3<br />
+  </p>
+
+  <% if current_user %>
+    <%= link_to "Chat with my matches", rooms_path, class:'btn btn-success btn-lg mx-1' %>
+    <%= link_to "View my profile", edit_user_registration_path, class:'btn btn-secondary btn-lg mx-1' %>
+
+  <% else %>
+    <%= link_to "Log In", new_user_session_path, class:'btn btn-secondary btn-lg mx-1' %>
+    <%= link_to "Sign Up", new_user_registration_path, class:'btn btn-success btn-lg mx-1' %>
+  <% end %>
+</div>
+
+<%= turbo_stream_from "public_messages" %>
+<div class="" id="public_messages" style="overflow: hidden; height: calc(100vh-56px); padding: 0px;">
+  <% @messages.each do |message| %>
+    <%= render "messages/message_preview", message: message %>
+  <% end %>
+</div>
+
+<footer class="bg-info text-center text-lg-start fixed-bottom text-muted">
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-dark">
+    © 2023 It Takes Three
+  </div>
+  <!-- Copyright -->
+</footer>

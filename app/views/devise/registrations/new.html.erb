@@ -1,0 +1,41 @@
+<div class="card p-4 m-4 bg-dark text-light mx-auto" style="width: 25em;">
+  <h2>Sign up</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field mt-4">
+      <%= f.label "Email (yup, just use a fake one)" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :username, required: true %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :profile %><br />
+      <%= f.text_area :profile, required: true, size: "32x9", value: "Hi! I am a programmer who loves chatGPT :)\nI usually ride bicycles when I'm not programming.\nI'm allergic to grapes." %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", required: true %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
+    </div>
+    <div class="actions mt-4">
+      <%= f.submit "Sign up", class: "btn btn-success mt-2" %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>
+
+<footer class="bg-info text-center text-lg-start fixed-bottom text-muted">
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-dark">
+    © 2023 It Takes Three
+  </div>
+  <!-- Copyright -->
+</footer>

@@ -1,0 +1,89 @@
+<%= turbo_frame_tag "appearance_channel" %>
+<div id="appearance_channel"></div>
+<%= audio_tag "discord.mp3", id: 'audio-tag' %>
+<%= turbo_frame_tag "message_error" do %>
+  <%= render 'shared/message_error' %>
+<% end %>
+<div id="chatroom_container" class="row text-light">
+  <div id="side_panel" class="col-md-4">
+<!--
+    <li class="list-group-item d-flex align-items-center justify-content-between user_list_item">
+      <div class="icon-container">
+        <%= link_to image_tag(current_user.chat_avatar, class: 'chat_pfp'), current_user %>
+        <%= turbo_stream_from "user_status" %>
+        <div>
+          <%= render "users/status", user: current_user %>
+        </div>
+      </div>
+      <div class="ms-2 me-auto username">
+        <%= link_to current_user.username, current_user, class:"msg-role-#{current_user.role}" %>
+      </div>
+    </li>
+-->
+
+    <h4 class="text-center my-4 text-muted"> 😃 Your Matches 💖</h4>
+    <%= turbo_stream_from "users" %>
+    <div id="users" data-controller="user-list">
+      <%= render "users/users", users: @users %>
+    </div>
+
+<!--
+    <h4> Rooms </h4>
+    <%= turbo_stream_from "rooms" %>
+    <%= render 'layouts/new_room_form' %>
+    <%= render 'rooms/search_form' %>
+    <div id="rooms" data-controller="room-list">
+      <%= render "rooms/rooms", rooms: @joined_rooms, user: current_user %>
+    </div>
+-->
+
+  </div>
+  <div id="room_container" class="text-light col-md-4">
+    <% if @single_room %>
+      <div id="single_room">
+        <h4 class="text-center my-4 text-muted">
+          💬
+          <%= @user&.username || @single_room.name %>
+          + GPT Bot 🤖
+<!--
+          <span><%= link_to "Call", call_user_path(user: @user), target: "_blank" %></span>
+-->
+        </h4>
+        <%= turbo_stream_from @single_room %>
+        <div id="messages" data-controller="scroll">
+          <%= turbo_frame_tag "page_handler" %>
+          <%= render "messages/pager", pagy: @pagy %>
+          <div id="messages-container">
+            <%= render @messages %>
+          </div>
+        </div>
+        <%= render 'layouts/new_message_form' %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div id="side_panel_right" class="col-md-4">
+    <h4 class="text-center my-4 text-muted"> 💁🏻‍♀️ About It Takes Three 📖 </h4>
+    <p class="text-dark">
+Put instructions here how to use this tool. Also describe its features
+<br><br>
+
+Edit your profile to give GPT bot some context about you. This will help it generate more relevant messages.
+<br><br>
+<%= link_to "Edit My Profile", edit_user_registration_path, class:'btn btn-secondary' %>
+<br><br>
+
+Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley. He looked or valley lively. If learn woody spoil of taken he cause.
+<br><br>
+Brother set had private his letters observe outward resolve. Shutters ye marriage to throwing we as. Effect in if agreed he wished wanted admire expect. Or shortly visitor is comfort placing to cheered do. Few hills tears are weeks saw. Partiality insensible celebrated is in. Am offended as wandered thoughts greatest an friendly. Evening covered in he exposed fertile to. Horses seeing at played plenty nature to expect we. Young say led stood hills own thing get.
+<br><br>
+He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.
+<br><br>
+It sportsman earnestly ye preserved an on. Moment led family sooner cannot her window pulled any. Or raillery if improved landlord to speaking hastened differed he. Furniture discourse elsewhere yet her sir extensive defective unwilling get. Why resolution one motionless you him thoroughly. Noise is round to in it quick timed doors. Written address greatly get attacks inhabit pursuit our but. Lasted hunted enough an up seeing in lively letter. Had judgment out opinions property the supplied.
+<br><br>
+Denote simple fat denied add worthy little use. As some he so high down am week. Conduct esteems by cottage to pasture we winding. On assistance he cultivated considered frequently. Person how having tended direct own day man. Saw sufficient indulgence one own you inquietude sympathize.
+<br><br>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+services:
+  - type: web
+    repo: https://github.com/MiltonRen/it-takes-three-test
+    name: THREE-prod-web
+    plan: free
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: bundle exec rails s
+    envVars:
+      - key: RAILS_ENV
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: THREE-prod-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: THREE-prod-redis
+          property: connectionString
+
+  - type: redis
+    name: THREE-prod-redis
+    plan: free # optional (defaults to starter)
+    ipAllowList: [] # only allow internal connections
+    maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
+
+databases:
+  - name: THREE-prod-postgres
+    plan: free
+    ipAllowList: [] # only allow internal connections

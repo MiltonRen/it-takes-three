@@ -1,0 +1,58 @@
+<div class="card p-4 m-4 bg-dark text-light mx-auto" style="width: 25em;">
+  <%= link_to :back, class: "text-muted mb-2" do %>
+  &larr;
+  back to chat
+  <% end %>
+  
+  <h2>My Profile</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field mt-4">
+      <%= f.label :my_avatar %><br />
+      <%= image_tag(resource.avatar_thumbnail) if resource.avatar.attached? %>
+    </div>
+    <div class="field mt-4">
+      <%= f.file_field :avatar, class: "btn btn-secondary" %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :username, required: true %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :profile %><br />
+      <%= f.text_area :profile, required: true, size: "32x9", value: resource.profile %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label "New Password (if you want to change it)" %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :new_password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :current_password_to_confirm_changes %><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", required: true %>
+    </div>
+    <div class="actions mt-4">
+      <%= f.submit "Update My Profile", class: "btn btn-success mt-2" %>
+    </div>
+  <% end %>
+
+<!--
+  <h3>Cancel my account</h3>
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+-->
+</div>
+
+<footer class="bg-info text-center text-lg-start text-muted">
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-dark">
+    © 2023 It Takes Three
+  </div>
+  <!-- Copyright -->
+</footer>
