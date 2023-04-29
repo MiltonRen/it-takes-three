@@ -59,6 +59,7 @@ class Room < ApplicationRecord
                         })
   end
 
+  # COLLECTOR
   # well it is a hackathon, so I'm entitled to create a bunch of small mud balls like this
   def process_latest_messages
     return if talking_with_bot
