@@ -71,7 +71,8 @@
   <div id="side_panel_right" class="col-md-4">
     <h4 class="text-center my-4 text-muted"> 💁🏻‍♀️ About Demo </h4>
     <div class="text-dark">
-      Here's how to play with this demo:
+      Say hello to the <b class="text-info">@bot</b> ! This demo introduces a quirky way to meet new people with the help of 
+      a friendly chatbot, who will be your trusty sidekick and help you find your soulmate!
       <br><br>
 
       Enrich your profile to give the bot more context about you. This will help it generate more relevant ice breakers and ideas.
@@ -79,10 +80,14 @@
       <%= link_to "My Profile", edit_user_registration_path, class:'btn btn-secondary' %>
       <br><br>
 
-      The bot will automatically bootstrap a new conversation by providing an ice-breaker based on your & your match's profiles.
+      The bot will automatically start a new conversation by providing an ice breaker based on your and your match's profiles.
       <br><br>
+
+      The bot will jump into the conversation from time to time. You can also type <b class="text-info">@bot</b> in your messages to ask the bot to participate immediately!
+      <br><br>
+
       <% if @single_room.present? %>
-        You can check the bot's status here ( idle / thinking ). If the bot becomes unresponsive, use this button to reset it:
+        You can check the bot's status below ( idle / thinking ). If the bot becomes unresponsive, here's a handy reset button:
         <br><br>
         <div class="d-flex justify-content-begin align-items-center">
           <%= link_to "Reset Bot", room_refresh_path(@single_room), class:'btn btn-secondary mr-2', data: { 'turbo-method': :patch }  %>
@@ -91,9 +96,6 @@
         <br>
       <% end %>
 
-      The bot will jump into the conversation from time to time. You can also type <b class="text-info">@bot</b> in your messages to ask the bot to participate immediately!
-
-      <br><br>
       <div class="text-muted" style="font-size: 0.7em;">
         Made with <i class="fa-solid fa-heart text-muted"></i> by 
         <a href="https://devpost.com/sarahtxy" target="_blank" class="text-muted">Xinyu</a>
