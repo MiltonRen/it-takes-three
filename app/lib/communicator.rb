@@ -1,6 +1,4 @@
 class Communicator
-  
-  VF_CLIENT = VoiceflowClient.new(token: nil)
 
   def self.ice_breaker(room, user_a, user_b)
     prompt = "We have two people matched on a dating app:\n" +
@@ -41,18 +39,15 @@ class Communicator
   end
 
   def self.get_response(prompt, room)
-    response = VF_CLIENT.interact(room.name, prompt)
+    # response = VF_CLIENT.interact(room.name, prompt)
 
-    Message.create!(
-      body: response,
-      room_id: room.id,
-      from_bot: true,
-      user_id: 1, # I know this is horrible : ) let's make the first user the bot
-    )
-  end
+    # Message.create!(
+    #   body: response,
+    #   room_id: room.id,
+    #   from_bot: true,
+    #   user_id: 1, # I know this is horrible : ) let's make the first user the bot
+    # )
 
-  # use this to test bot responses in the console
-  def self.test(id, prompt)
-    VF_CLIENT.interact(id, prompt)
+    BotJob.perform_async(room.name, room.id, prompt)
   end
 end

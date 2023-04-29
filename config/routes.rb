@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'call', to: 'call#user', as: 'call_user'
   post 'call', to: 'call#create'
 
+  require "sidekiq/web"
+  mount Sidekiq::Web => '/sidekiq'
+
   resources :rooms do
     resources :messages
     collection do

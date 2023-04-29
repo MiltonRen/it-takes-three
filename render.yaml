@@ -21,6 +21,28 @@ services:
           name: THREE-prod-redis
           property: connectionString
 
+  - type: worker
+    repo: https://github.com/MiltonRen/it-takes-three
+    name: THREE-prod-worker
+    plan: free
+    env: ruby
+    buildCommand: bundle install
+    startCommand: bundle exec sidekiq
+    envVars:
+      - key: RAILS_ENV
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: THREE-prod-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: THREE-prod-redis
+          property: connectionString
+
   - type: redis
     name: THREE-prod-redis
     plan: free # optional (defaults to starter)

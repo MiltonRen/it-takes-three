@@ -84,3 +84,5 @@ gem "redcarpet", "~> 3.5"
 gem "chartkick", "~> 4.2"
 
 gem "groupdate", "~> 6.1"
+
+gem 'sidekiq'
