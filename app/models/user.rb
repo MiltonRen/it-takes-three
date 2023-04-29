@@ -56,6 +56,10 @@ class User < ApplicationRecord
     end
   end
 
+  def is_bot?
+    id == 1
+  end
+
   private
 
   def add_default_avatar

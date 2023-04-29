@@ -64,15 +64,32 @@ body {
   width: 80%;
   margin-right: 5px;
 }
+.bot-message-box {
+  word-wrap: break-word;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 1px;
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #dd9cdf;
+}
 .message-box {
   word-wrap: break-word;
   width: fit-content;
   max-width: 40%;
   min-width: 10%;
-  padding: 5px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 1px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: #64b2e9;
+  background-color: #73bbee;
 }
 .user_row {
   height: 50px;

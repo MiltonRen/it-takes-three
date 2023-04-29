@@ -33,11 +33,16 @@ class Message < ApplicationRecord
     return unless room.is_private
 
     is_participant = Participant.where(user_id: user.id, room_id: room.id).first
-    throw :abort unless is_participant
+    throw :abort unless (is_participant || user.is_bot?)
   end
 
   def update_parent_room
-    room.update(last_message_at: Time.now)
+    if from_bot
+      room.update(last_message_at: Time.now, talking_with_bot: false)
+    else
+      room.update(last_message_at: Time.now)
+      room.process_latest_messages
+    end
   end
 
   def self.messages_this_month

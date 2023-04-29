@@ -1,3 +1,5 @@
+# talking_with_bot boolean
+
 class Room < ApplicationRecord
   validates_uniqueness_of :name
   scope :public_rooms, -> { where(is_private: false) }
@@ -55,5 +57,25 @@ class Room < ApplicationRecord
                           last_message:,
                           sender:
                         })
+  end
+
+  # well it is a hackathon, so I'm entitled to create a bunch of small mud balls like this
+  def process_latest_messages
+    return if talking_with_bot
+
+    messages_look_at = messages.includes(:user).order(created_at: :desc).first(20)
+
+    latest_message_group = []
+    active_users = Set.new()
+    messages_look_at.each do |message|
+      latest_message_group << message
+      active_users.add(message.user.id) unless message.from_bot
+      break if message.from_bot
+    end
+
+    if latest_message_group.size > 4 && active_users.size > 1
+      update!(talking_with_bot: true)
+      Communicator.conversation_group(self, latest_message_group)
+    end
   end
 end
