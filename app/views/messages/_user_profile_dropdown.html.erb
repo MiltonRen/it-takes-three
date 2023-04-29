@@ -4,7 +4,7 @@
     </a>
     <ul class="dropdown-menu bg-dark text-light p-2" style="width: 16em;">
         <div class="">
-          <%= content_tag(:div, user.username, style:"color:#fff") %>
+          <%= content_tag(:div, "#{user.username}'s Profile", style:"color:#fff") %>
         </div>
         <li><hr class="dropdown-divider"></li>
         <li><%= user.profile %></li>

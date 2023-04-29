@@ -1,24 +1,51 @@
 <div class="p-5 text-center">
+  <% if current_user.present? %>
+    <%= audio_tag "dingding.mp3", id: 'dingding-tag' %>
+    <script>
+      document.getElementById("dingding-tag").play();
+    </script>
+    <h1>It's a match, <%= current_user.username %>!</h1>
+    <div class="d-flex align-content-center">
+      <div class="mx-auto">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_8fl3677q.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>
+      </div>
+    </div>
+  <% else %>
+    <h1>It Takes Three</h1>
+  <% end %>
 
-<% if current_user.present? %>
-  <h1>Welcome, <%= current_user.username %>!</h1>
-<% else %>
-  <h1>It Takes Three</h1>
-<% end %>
+  <% if current_user.present? %>
+    <h4 class="">
+      <% if @online_users > 1 %>
+        <%= @online_users %> of your matches are online now!
+      <% elsif @online_users == 1 %>
+        <%= @online_users %> of your matches is online now!
+      <% else %>
+        Send a message to your next date!
+      <% end %>
+      <br/><br/>
+    </h4>
 
-  <p><strong><%= @online_users %></strong> of you matches are online now!</p>
-  <p>
-    Tired of the same old dating app conversations?<br />
-    Looking for a way to break the ice and make a good impression?<br />
-    Introducing <b>It Take Three</b> -- invite a lovely <b>GPT chatbot</b> to the chat with your matches!<br />
-    Our bot helps you find common ground with your matches, so you can start building a connection right away <3<br />
-  </p>
+    <h6>
+      BTW, to make the demo easier...
+      <br/>
+      Everybody is matched with everybody by default : )
+      <br/><br/><br/>
+    </h6>
 
-  <% if current_user %>
     <%= link_to "Chat with my matches", rooms_path, class:'btn btn-success btn-lg mx-1' %>
     <%= link_to "View my profile", edit_user_registration_path, class:'btn btn-secondary btn-lg mx-1' %>
-
   <% else %>
+    <h4 class="">
+      🔥 Tinder x GPT 🤖
+      <br/><br/>
+      Invite a cute <b>chatbot</b> to chat together
+      <br/><br/>
+      Break ice instantly & start building connections right away!
+      <br/><br/>
+    </h4>
+
     <%= link_to "Log In", new_user_session_path, class:'btn btn-secondary btn-lg mx-1' %>
     <%= link_to "Sign Up", new_user_registration_path, class:'btn btn-success btn-lg mx-1' %>
   <% end %>

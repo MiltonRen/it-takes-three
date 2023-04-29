@@ -21,7 +21,7 @@
     </li>
 -->
 
-    <h4 class="text-center my-4 text-muted"> 😃 Your Matches 💖</h4>
+    <h4 class="text-center my-4 text-muted"> 😃 Your Matches 🌹</h4>
     <%= turbo_stream_from "users" %>
     <div id="users" data-controller="user-list">
       <%= render "users/users", users: @users %>
@@ -59,6 +59,11 @@
         </div>
         <%= render 'layouts/new_message_form' %>
       </div>
+    <% else %>
+      <div class="text-dark d-flex flex-column align-item-center h-100">
+        <h5 class="text-muted mt-auto mx-auto">👈🏽 Select a match to start</h4>
+        <div class="text-muted mb-auto mx-auto">Tip: this demo works best with a friend!</div>
+      </div>
     <% end %>
   </div>
 
@@ -66,24 +71,27 @@
   <div id="side_panel_right" class="col-md-4">
     <h4 class="text-center my-4 text-muted"> 💁🏻‍♀️ About It Takes Three 📖 </h4>
     <p class="text-dark">
-Put instructions here how to use this tool. Also describe its features
-<br><br>
+      Put instructions here how to use this tool. Also describe its features
+      <br><br>
 
-Edit your profile to give GPT bot some context about you. This will help it generate more relevant messages.
-<br><br>
-<%= link_to "Edit My Profile", edit_user_registration_path, class:'btn btn-secondary' %>
-<br><br>
+      Include <b>@bot</b> in your message to instantantly engage the bot!
+      <br><br>
 
-Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley. He looked or valley lively. If learn woody spoil of taken he cause.
-<br><br>
-Brother set had private his letters observe outward resolve. Shutters ye marriage to throwing we as. Effect in if agreed he wished wanted admire expect. Or shortly visitor is comfort placing to cheered do. Few hills tears are weeks saw. Partiality insensible celebrated is in. Am offended as wandered thoughts greatest an friendly. Evening covered in he exposed fertile to. Horses seeing at played plenty nature to expect we. Young say led stood hills own thing get.
-<br><br>
-He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.
-<br><br>
-It sportsman earnestly ye preserved an on. Moment led family sooner cannot her window pulled any. Or raillery if improved landlord to speaking hastened differed he. Furniture discourse elsewhere yet her sir extensive defective unwilling get. Why resolution one motionless you him thoroughly. Noise is round to in it quick timed doors. Written address greatly get attacks inhabit pursuit our but. Lasted hunted enough an up seeing in lively letter. Had judgment out opinions property the supplied.
-<br><br>
-Denote simple fat denied add worthy little use. As some he so high down am week. Conduct esteems by cottage to pasture we winding. On assistance he cultivated considered frequently. Person how having tended direct own day man. Saw sufficient indulgence one own you inquietude sympathize.
-<br><br>
+      Edit your profile to give GPT bot some context about you. This will help it generate more relevant ice breakers and conversations.
+      <br><br>
+      <%= link_to "Edit My Profile", edit_user_registration_path, class:'btn btn-secondary' %>
+      <br><br>
+
+      Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley. He looked or valley lively. If learn woody spoil of taken he cause.
+      <br><br>
+      Brother set had private his letters observe outward resolve. Shutters ye marriage to throwing we as. Effect in if agreed he wished wanted admire expect. Or shortly visitor is comfort placing to cheered do. Few hills tears are weeks saw. Partiality insensible celebrated is in. Am offended as wandered thoughts greatest an friendly. Evening covered in he exposed fertile to. Horses seeing at played plenty nature to expect we. Young say led stood hills own thing get.
+      <br><br>
+      He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.
+      <br><br>
+      It sportsman earnestly ye preserved an on. Moment led family sooner cannot her window pulled any. Or raillery if improved landlord to speaking hastened differed he. Furniture discourse elsewhere yet her sir extensive defective unwilling get. Why resolution one motionless you him thoroughly. Noise is round to in it quick timed doors. Written address greatly get attacks inhabit pursuit our but. Lasted hunted enough an up seeing in lively letter. Had judgment out opinions property the supplied.
+      <br><br>
+      Denote simple fat denied add worthy little use. As some he so high down am week. Conduct esteems by cottage to pasture we winding. On assistance he cultivated considered frequently. Person how having tended direct own day man. Saw sufficient indulgence one own you inquietude sympathize.
+      <br><br>
     </p>
   </div>
 </div>

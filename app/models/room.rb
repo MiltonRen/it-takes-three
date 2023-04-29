@@ -67,13 +67,18 @@ class Room < ApplicationRecord
 
     latest_message_group = []
     active_users = Set.new()
+    bot_summoned = false
     messages_look_at.each do |message|
       latest_message_group << message
+      bot_summoned = true if message.body.include?('@bot')
       active_users.add(message.user.id) unless message.from_bot
       break if message.from_bot
     end
 
-    if latest_message_group.size > 4 && active_users.size > 1
+    if bot_summoned
+      update!(talking_with_bot: true)
+      Communicator.conversation_group_engage_bot(self, latest_message_group)
+    elsif latest_message_group.size > 4 && active_users.size > 1
       update!(talking_with_bot: true)
       Communicator.conversation_group(self, latest_message_group)
     end

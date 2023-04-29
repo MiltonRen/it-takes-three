@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     @pagy, messages = pagy(pagy_messages, items: 10)
     @messages = messages.reverse
 
+    if @messages.blank?
+      Communicator.ice_breaker(@single_room, current_user, @user)
+    end
+
     render 'rooms/index'
   end
 end
