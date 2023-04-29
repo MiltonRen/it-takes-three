@@ -21,7 +21,7 @@ services:
           name: THREE-prod-redis
           property: connectionString
 
-  - type: web
+  - type: worker
     repo: https://github.com/MiltonRen/it-takes-three
     name: THREE-prod-worker
     plan: free
