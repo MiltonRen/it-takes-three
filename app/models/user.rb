@@ -34,7 +34,7 @@ class User < ApplicationRecord
   end
 
   def broadcast_update
-    broadcast_replace_to 'user_status', partial: 'users/status', user: self
+    # broadcast_replace_to 'user_status', partial: 'users/status', user: self
   end
 
   def has_joined_room(room)
