@@ -71,17 +71,17 @@
   <div id="side_panel_right" class="col-md-4">
     <h4 class="text-center my-4 text-muted"> 💁🏻‍♀️ About Demo </h4>
     <div class="text-dark">
-      Say hello to the <b class="text-info">@bot</b> ! This demo introduces a quirky way to meet new people with the help of 
+      Say hello to the <b style="color: #4b9cdb;">@bot</b> ! This demo introduces a quirky way to meet new people with the help of 
       a friendly chatbot, who will be your trusty sidekick and help you find your soulmate!
       <br><br>
 
       Enrich your profile to give the bot more context about you. This will help it generate more relevant ice breakers and ideas.
       <br><br>
-      <%= link_to "My Profile", edit_user_registration_path, class:'btn btn-secondary' %>
+      <%= link_to "My Profile", edit_user_registration_path, class:'btn btn-secondary font-weight-bold' %>
       <br><br>
 
       <b>Interact with the bot:</b> The bot will automatically start a new conversation by providing an ice breaker based on your and your match's profiles.
-      The bot will jump into the conversation from time to time. You can also type <b class="text-info">@bot</b> in your messages to ask the bot to participate immediately!
+      The bot will jump into the conversation from time to time. You can also type <b style="color: #4b9cdb;">@bot</b> in your messages to ask the bot to participate immediately!
       <br><br>
 
       <b>Mutual interest evaluation:</b> the bot will have a sense of how the conversation is going, and can detect if you and your match like each other.
@@ -92,7 +92,7 @@
         <b>Bot status:</b> You can check the status of the bot below ( idle / thinking ). Click the reset button if the bot becomes unresponsive.
         <br><br>
         <div class="d-flex justify-content-begin align-items-center">
-          <%= link_to "Reset Bot", room_refresh_path(@single_room), class:'btn btn-secondary mr-2', data: { 'turbo-method': :patch }  %>
+          <%= link_to "Reset Bot", room_refresh_path(@single_room), class:'btn btn-secondary mr-2 font-weight-bold', data: { 'turbo-method': :patch }  %>
           <%= render 'rooms/bot_status', current_room: @single_room %>
         </div>
         <br>

@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
       user_id: current_user.id
     )
 
-    @message.body = parse_at_mentions(@message.body)
+    # @message.body = parse_at_mentions(@message.body)
     should_create_message = parse_slash_commands(@message)
 
     return unless should_create_message

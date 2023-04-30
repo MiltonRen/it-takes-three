@@ -26,7 +26,9 @@
 footer{
   height: 26px;
 }
-
+div::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
 .dynamic_bg {
   background-attachment: fixed;
   background-repeat: repeat;
@@ -150,7 +152,7 @@ footer{
   background-color: grey;
   border: 2px solid white;
   top: 18px;
-  right: -10px;
+  right: -11px;
   position: absolute;
 }
 .room_search_field {
