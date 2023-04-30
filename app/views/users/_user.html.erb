@@ -15,7 +15,7 @@
           </div>
         <%= render "messages/user_profile_dropdown", user: user %>
         </div>
-        <%= link_to "Chat with #{user.username}", user, class:"touchy ms-2 me-auto username msg-role-#{user.role} font-weight-bold", data: {turbo: "false"}%>
+        <%= link_to "Chat →", user, class:"touchy ms-2 me-auto username msg-role-#{user.role} font-weight-bold btn", data: {turbo: "false"}%>
       </div>
     </div>
 <!--

@@ -1,6 +1,6 @@
 <div class="dynamic_bg row" style="height: max(55em, calc(100vh - 150px));">
 
-<div class="card p-4 m-4 bg-light text-dark col-md-4" style="width: 21em;">
+<div class="card p-4 m-4 bg-light text-dark col-md-4" style="width: 22em;">
   <h4 class="mb-4">Sample Profiles to Use</h4>
   <div class="mb-4">
   I'm a big foodie and love exploring new restaurants and cuisines. I'm also an avid traveler and enjoy experiencing new cultures. In my free time, you can usually find me reading a good book or watching a movie.
@@ -25,12 +25,13 @@
   </div>
 </div>
 
-<div class="card p-4 m-4 bg-dark text-light col-md-4" style="width: 21em;">
+<div class="card p-4 m-4 bg-dark text-light col-md-4" style="width: 22em;">
   <h2>Sign up</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field mt-4">
-      <%= f.label "Email (just use a fake one - everything will be deleted next week)" %><br />
+      <%= f.label "Email" %><br />
+      <div class="text-muted mb-1">Yup, just use a fake one. <br>Everything will be deleted one week from now.</div>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
     </div>
     <div class="field mt-4">
@@ -38,7 +39,8 @@
       <%= f.text_field :username, required: true %>
     </div>
     <div class="field mt-4">
-      <%= f.label :profile %><br />
+      <%= f.label "Profile" %><br />
+      <div class="text-muted mb-1">This is important for the bot to facilitate chats! <br> Borrow a sample one if you don't feel like writing.</div>
       <%= f.text_area :profile, required: true, size: "32x9", value: "I'm a bit of a introvert and love to relax at home with a good book or Netflix series. I'm also passionate about animal welfare and volunteer at a local animal shelter in my free time. I'm looking for someone who shares similar interests and values." %>
     </div>
     <div class="field mt-4">
