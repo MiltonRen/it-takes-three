@@ -9,10 +9,12 @@
       <div class="col-12 d-flex align-items-center justify-content-between">
         <div class="icon-container d-flex align-items-center">
           <%= link_to image_tag(user.chat_avatar, class: 'chat_pfp'), user %>
+<!--
           <%= turbo_stream_from "user_status" %>
           <div>
             <%= render "users/status", user: user %>
           </div>
+-->
         <%= render "messages/user_profile_dropdown", user: user %>
         </div>
         <%= link_to user, class:"touchy ms-2 me-auto username msg-role-#{user.role} font-weight-bold btn", data: {turbo: "false"} do%>
