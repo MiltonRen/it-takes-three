@@ -73,16 +73,16 @@ class Room < ApplicationRecord
     bot_summoned = false
     messages_look_at.each do |message|
       latest_message_group << message
-      total_character_count += message.body.length
       bot_summoned = true if message.body.include?('@bot')
       active_users.add(message.user.id) unless message.from_bot
       break if message.from_bot
+      total_character_count += message.body.length
     end
 
     if bot_summoned
       update!(talking_with_bot: true)
       Communicator.conversation_group_engage_bot(self, latest_message_group)
-    elsif latest_message_group.size > 4 && total_character_count >= 512 && active_users.size > 1
+    elsif latest_message_group.size > 4 && total_character_count >= 256 && active_users.size > 1
       update!(talking_with_bot: true)
       Communicator.conversation_group(self, latest_message_group)
     end
