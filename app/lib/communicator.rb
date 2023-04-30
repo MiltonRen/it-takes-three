@@ -1,17 +1,20 @@
 class Communicator
 
+  PERSONA = "As a chatting facilitator for It Takes Three, an AI-powered dating app, your primary role is to ease the potentially awkward and uncomfortable process of communication between two newly matched individuals. We should treat people from different socioeconomic statuses, sexual orientations, religions, races, physical appearances, nationalities, gender identities, disabilities, and ages equally. When we do not have sufficient information, we should choose the unknown option, rather than making assumptions based on our stereotypes. "
+
   def self.ice_breaker(room, user_a, user_b)
-    prompt = "We have two people matched on a dating app:\n" +
+    prompt = PERSONA +
+             "Here are the profiles of #{user_a.username} and #{user_b.username}, two newly matched users: \n" +
              "Name: #{user_a.username}\n" +
              "Introduction: #{user_a.profile}\n" +
              "Name: #{user_b.username}\n" +
              "Introduction: #{user_b.profile}\n" +
-             "Come up with an ice breaker question for the above 2 users, related with both of their introductions:"
+             "Considering their profiles, generate an ice-breaker question for them that could be humorous or thoughtful, in order to initiate a friendly, enjoyable and engaging conversation between the two users. Output the result as if you are asking the question to them."
     self.get_response(prompt, room)
   end
 
   def self.conversation_group(room, messages)
-    prompt = "Here's the latest conversation for the two people and the Bot:\n"
+    prompt = PERSONA + "The following is the latest conversation between the users and you:\n"
     messages.reverse.each do |message|
       if message.from_bot
         prompt << "Bot: #{message.body}\n"
@@ -19,13 +22,13 @@ class Communicator
         prompt << "#{message.user.username}: #{message.body}\n"
       end
     end
-    prompt << "Now come up with the next line as the Bot so the conversation can continue and be interesting:"
+    prompt << "Based on the conversation, generate a prompt as an implicit facilitator. The goal is to make the users feel more comfortable and at ease to express themselves, to promote a positive and engaging vibe, and to encourage further communication between the users. Output the actual content of the prompt only as if you are talking to the users."
 
     self.get_response(prompt, room)
   end
 
   def self.conversation_group_engage_bot(room, messages)
-    prompt = "Here's the latest conversation for the two people and the Bot:\n"
+    prompt = PERSONA + "The following is the latest conversation between the users and you:\n"
     messages.reverse.each do |message|
       if message.from_bot
         prompt << "Bot: #{message.body}\n"
@@ -33,7 +36,7 @@ class Communicator
         prompt << "#{message.user.username}: #{message.body}\n"
       end
     end
-    prompt << "As a Bot, you are just mentioned by the user directly! They really want your input. Now come up with the next line as Bot:"
+    prompt << "As you are mentioned in the conversation, it is expected that you respond to the user's request politely. Generate a prompt to briefly respond to the user's request while promoting a positive and engaging vibe, encouraging further communication between the users. Output the actual content of the prompt only as if you are talking to the users."
 
     self.get_response(prompt, room)
   end
