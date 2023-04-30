@@ -32,8 +32,8 @@ export default class SignalingServer extends Controller {
 
     navigator.mediaDevices
       .getUserMedia({
-        audio: true,
-        video: true,
+        audio: false,
+        video: false,
       })
       .then((stream) => {
         localstream = stream;
