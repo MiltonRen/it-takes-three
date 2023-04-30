@@ -80,7 +80,7 @@ class Room < ApplicationRecord
     if bot_summoned
       update!(talking_with_bot: true)
       Communicator.conversation_group_engage_bot(self, latest_message_group)
-    elsif latest_message_group.size > 4 && active_users.size > 1
+    elsif latest_message_group.size > 8 && active_users.size > 1
       update!(talking_with_bot: true)
       Communicator.conversation_group(self, latest_message_group)
     end

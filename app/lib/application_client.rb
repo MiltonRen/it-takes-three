@@ -33,42 +33,11 @@ class ApplicationClient
     {}
   end
 
-  def get(path, **kwargs)
-    make_request(
-      klass: Net::HTTP::Get,
-      path: path,
-      query: kwargs
-    )
-  end
-
-  def post(path, **kwargs)
+  def post(path, headers, **kwargs)
     make_request(
       klass: Net::HTTP::Post,
       path: path,
-      body: kwargs.to_json
-    )
-  end
-
-  def patch(path, **kwargs)
-    make_request(
-      klass: Net::HTTP::Patch,
-      path: path,
-      body: kwargs.to_json
-    )
-  end
-
-  def put(path, **kwargs)
-    make_request(
-      klass: Net::HTTP::Put,
-      path: path,
-      body: kwargs.to_json
-    )
-  end
-
-  def delete(path, **kwargs)
-    make_request(
-      klass: Net::HTTP::Delete,
-      path: path,
+      headers: headers,
       body: kwargs.to_json
     )
   end

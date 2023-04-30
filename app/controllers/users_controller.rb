@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
     if @messages.blank?
       Communicator.ice_breaker(@single_room, current_user, @user)
+      @single_room.update!(talking_with_bot: true)
     end
 
     render 'rooms/index'
