@@ -2,7 +2,7 @@ services:
   - type: web
     repo: https://github.com/MiltonRen/it-takes-three
     name: THREE-prod-web
-    plan: starter
+    plan: standard
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: bundle exec rails s
