@@ -30,17 +30,17 @@ export default class SignalingServer extends Controller {
     localVideo = document.getElementById("local-video");
     remoteVideoContainer = document.getElementById("remote-video-container");
 
-    navigator.mediaDevices
-      .getUserMedia({
-        audio: false,
-        video: false,
-      })
-      .then((stream) => {
-        localstream = stream;
-        localVideo.srcObject = stream;
-        localVideo.muted = true;
-      })
-      .catch(this.logError);
+    // navigator.mediaDevices
+    //   .getUserMedia({
+    //     audio: false,
+    //     video: false,
+    //   })
+    //   .then((stream) => {
+    //     localstream = stream;
+    //     localVideo.srcObject = stream;
+    //     localVideo.muted = true;
+    //   })
+    //   .catch(this.logError);
   }
   handleJoinSession() {
     if (connection) {
